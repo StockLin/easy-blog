@@ -3,23 +3,23 @@ import PostCard from "./PostICard";
 import { useGetPostQuery, useGetPostsQuery } from "./postsSlice";
 import { IPost } from "./types";
 
-const PostList: React.FC = () => {
-  const { isLoading, isFetching, isSuccess, data: posts, error } = useGetPostsQuery();
+interface IProps {
+  posts?: IPost[],
+  loading?: boolean,
+}
 
-  return isFetching ? (
+const PostList: React.FC<IProps> = ({ posts, loading = false }) => {
+
+  return loading ? (
     <p>Loading</p>
-  ) : isSuccess ? (
+  ) : (
     <div className=" flex flex-col p-8 gap-4">
       {
-        posts.map(post => (
+        posts?.map(post => (
           <PostCard post={post} />
         ))
       }
     </div>
-  ) : error ? (
-    <p>{JSON.stringify(error)}</p>
-  ) : (
-    <p>Unexpected Error</p>
   )
 }
 

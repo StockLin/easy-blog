@@ -2,7 +2,8 @@ export interface IPost {
   id: number,
   userId: number,
   title: string,
-  content: string
+  content: string,
+  thumbnail?: string
 }
 
 // define api response type

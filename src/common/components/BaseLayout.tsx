@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "./Navbar";
 
 interface IProps {
   children?: React.ReactNode
@@ -6,12 +7,12 @@ interface IProps {
 
 const BaseLayout: React.FC<IProps> = ({ children }) => {
   return (
-    <div>
+    <div className=" relative w-full">
       <header>
-        Nav
+        <Navbar />
       </header>
 
-      <div className=" container mx-auto">
+      <div className=" container mx-auto mt-[32px]">
         {children}
       </div>
 

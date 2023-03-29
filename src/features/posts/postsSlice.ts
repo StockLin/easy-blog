@@ -10,7 +10,8 @@ export const extendedPostsApiSlice = apiSlice.injectEndpoints({
           id: post.id,
           userId: post.userId,
           title: post.title,
-          content: post.body
+          content: post.body,
+          thumbnail: "https://images.pexels.com/photos/14282982/pexels-photo-14282982.jpeg"
         }));
 
         return posts;
