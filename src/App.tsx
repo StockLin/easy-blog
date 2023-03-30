@@ -1,9 +1,11 @@
-import React from 'react';
+import React from "react";
 import './App.css';
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { SkeletonTheme } from "react-loading-skeleton"
+import "react-loading-skeleton/dist/skeleton.css";
 import BaseLayout from './common/components/BaseLayout';
 import PostList from './features/posts/PostList';
 import Post from './features/posts/Post';
@@ -26,10 +28,12 @@ const router = createBrowserRouter([
 
 const App = () => {
   return (
-    <div className="App">
-      <BaseLayout>
-        <RouterProvider router={router} />
-      </BaseLayout>
+    <div className="App text-gr">
+      <SkeletonTheme baseColor="rgb(229, 231, 235)" highlightColor="rgb(243, 244, 246)">
+        <BaseLayout>
+          <RouterProvider router={router} />
+        </BaseLayout>
+      </SkeletonTheme>
     </div>
   );
 }
