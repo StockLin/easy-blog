@@ -21,21 +21,21 @@ const PostCard: React.FC<IProps> = ({ post, bookMark = false, hiddenLine = false
   const { data: user } = useGetUserQuery(userId);
 
   const renderCardFooter = (
-    <div className=" w-full flex flex-row justify-between item-center py-8">
-      <div className=" text-xs flex flex-row items-center flex-nowrap gap-2">
-        <button className=" py-1 px-2 rounded-full bg-gray-200 hover:bg-gray-300 duration-300">JavaScript</button>
+    <div className="flex flex-row justify-between w-full py-8  item-center">
+      <div className="flex flex-row items-center gap-2 text-xs  flex-nowrap">
+        <button className="px-2 py-1 duration-300 bg-gray-200 rounded-full  hover:bg-gray-300">JavaScript</button>
         <p>5 min read</p>
       </div>
 
-      <div className=" flex flex-row gap-2 ">
-        <FaRegBookmark className=" text-xl text-gray-500 hover:text-gray-600 duration-300 cursor-pointer" />
-        <MdMoreHoriz className=" text-xl text-gray-500 hover:text-gray-600 duration-300 cursor-pointer" />
+      <div className="flex flex-row gap-2 ">
+        <FaRegBookmark className="text-xl text-gray-500 duration-300 cursor-pointer  hover:text-gray-600" />
+        <MdMoreHoriz className="text-xl text-gray-500 duration-300 cursor-pointer  hover:text-gray-600" />
       </div>
     </div>
   );
 
   return (
-    <div className=" w-full flex-1 flex flex-col justify-center items-start">
+    <div className="flex flex-col items-start justify-center flex-1 w-full ">
 
       {!hiddenLine && (<hr className=" w-full h-[1px] bg-[#e6e6e6] border-0 mb-[16px]" />)}
 
@@ -43,16 +43,16 @@ const PostCard: React.FC<IProps> = ({ post, bookMark = false, hiddenLine = false
       <UserBriefHeader user={user} />
 
       {/* content */}
-      <Link className=" w-full" to={`/post/${id}`}>
+      <Link className="w-full " to={`/post/${id}`}>
         <div className=" mt-[12px] flex flex-row justify-between item-start">
           {/* left side */}
           <div className={`${thumbnail ? "basis-3/4" : ""}`}>
-            <div className=" flex flex-col gap-4">
+            <div className="flex flex-col gap-4 ">
               <h2 className={`${size === "sm" ? "text-md" : "text-[22px]"} ${size === "sm" ? "lg:text-[16px]" : "lg:text-2xl"} font-bold line-clamp-3 cursor-pointer overflow-hidden`}>{title}</h2>
               {
                 showContent && (
                   <div className="hidden md:block">
-                    <p className=" line-clamp-2 text-gray-500 overflow-hidden">{content}</p>
+                    <p className="overflow-hidden text-gray-500  line-clamp-2">{content}</p>
                   </div>
                 )
               }
@@ -60,7 +60,7 @@ const PostCard: React.FC<IProps> = ({ post, bookMark = false, hiddenLine = false
 
             {
               showFooter && (
-                <div className=" hidden lg:block">
+                <div className="hidden  lg:block">
                   {renderCardFooter}
                 </div>
               )
@@ -85,7 +85,7 @@ const PostCard: React.FC<IProps> = ({ post, bookMark = false, hiddenLine = false
 
       {
         showFooter && (
-          <div className=" w-full block lg:hidden">
+          <div className="block w-full  lg:hidden">
             {renderCardFooter}
           </div>
         )

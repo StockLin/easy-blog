@@ -12,14 +12,14 @@ const Post: React.FC = () => {
   return isLoading ? (
     <p>Fetching Post</p>
   ) : (
-    <div className=" grid grid-cols-3 grap-8">
+    <div className="grid grid-cols-3  grap-8">
       {/* post */}
-      <div className=" col-span-2">
+      <div className="col-span-2 ">
 
         {post?.title}
       </div>
       {/* user */}
-      <div className=" col-span-1">
+      <div className="col-span-1 ">
         {user?.name}
       </div>
     </div>

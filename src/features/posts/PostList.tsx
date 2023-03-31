@@ -12,14 +12,14 @@ interface IProps {
 const PostList: React.FC<IProps> = ({ posts, loading = false }) => {
 
   return loading ? (
-    <div className=" p-8">
+    <div className="p-8 ">
       <PostSkeleton counts={4} showImage={true} />
     </div>
   ) : (
-    <div className=" flex flex-col p-8 gap-4">
+    <div className="flex flex-col gap-4 p-8 ">
       {
         posts?.map((post, idx) => (
-          <PostCard post={post} hiddenLine={idx === 0} />
+          <PostCard key={post.id} post={post} hiddenLine={idx === 0} />
         ))
       }
     </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../common/components/Button';
 import DescriptionBox from '../common/components/DescriptionBox';
 import PostCard from '../features/posts/PostICard';
@@ -9,13 +9,36 @@ import { IPost } from '../features/posts/types';
 import UserCard from '../features/users/UserCard'
 
 const Home = () => {
-  const { isLoading, isFetching, isSuccess, data: posts, error } = useGetPostsQuery();
+  const [page, setPage] = useState<number>(1);
+  const { isLoading, isFetching, isSuccess, data, error } = useGetPostsQuery({ page, pageSize: 10 });
+  const [posts, setPosts] = useState<IPost[]>([]);
   const [mostPopularsLoading, setMostPopularsLoading] = useState<boolean>(false);
   const mostPopulars: IPost[] = [
     { id: 1, userId: 1, title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit", content: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto" },
     { id: 2, userId: 1, title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit", content: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto" },
     { id: 3, userId: 1, title: "sunt aut facere repellat provident occaecati excepturi optio reprehenderit", content: "quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto" }
-  ]
+  ];
+
+  useEffect(() => {
+    const handleScroll = (e: any) => {
+      const scrollHeight = e.target.documentElement.scrollHeight;
+      const currentHeight = e.target.documentElement.scrollTop + window.innerHeight;
+
+      if (currentHeight + 1 > scrollHeight) {
+        setPage(page + 1);
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [page]);
+
+  useEffect(() => {
+    if (data) {
+      setPosts(prev => [...prev, ...data]);
+    }
+  }, [data]);
 
   const renderMostPopularPosts = () => {
     return (
@@ -27,8 +50,9 @@ const Home = () => {
           mostPopularsLoading ? (
             <PostSkeleton counts={2} />
           ) : (
-            mostPopulars?.map(post => (
+            mostPopulars?.map((post, idx) => (
               <PostCard
+                key={idx}
                 post={post}
                 hiddenLine={true}
                 size={"sm"}
@@ -48,9 +72,9 @@ const Home = () => {
       title="Recommended topics"
       showMore={{ name: "See more topics", url: "/" }}
     >
-      <div className=" flex flex-row gap-4 flex-wrap">
+      <div className="flex flex-row flex-wrap gap-4 ">
         {
-          ["Data Science", "Software Enginering", "Artificial Intelligence", "System Design Interview", "Software Development", "Coding"]?.map(topic => <Button>{topic}</Button>)
+          ["Data Science", "Software Enginering", "Artificial Intelligence", "System Design Interview", "Software Development", "Coding"]?.map((topic, idx) => <Button key={idx}>{topic}</Button>)
         }
       </div>
     </DescriptionBox>

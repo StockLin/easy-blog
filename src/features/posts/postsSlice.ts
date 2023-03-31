@@ -3,8 +3,8 @@ import { IPost, IPostResponse } from "./types";
 
 export const extendedPostsApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getPosts: builder.query<IPost[], void>({
-      query: () => "/posts",
+    getPosts: builder.query<IPost[], { page: number, pageSize: number, userId?: number | null }>({
+      query: ({ page = 1, pageSize = 5, userId = null }) => `/posts?_page=${page}&_limit=${pageSize}`,
       transformResponse: (result: IPostResponse[], meta) => {
         const posts: IPost[] = result?.map((post) => ({
           id: post.id,

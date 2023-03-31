@@ -12,8 +12,8 @@ const UserCard: React.FC<IProps> = ({ user }) => {
   const id = "text-id";
 
   const renderIcons = (icons: React.ReactNode[]) => {
-    return icons.map(icon => (
-      <div className=" p-2 border-[2px] border-gray-300 rounded-full hover:bg-gray-300 hover:text-gray-500 duration-300 cursor-pointer">
+    return icons.map((icon, idx) => (
+      <div key={idx} className=" p-2 border-[2px] border-gray-300 rounded-full hover:bg-gray-300 hover:text-gray-500 duration-300 cursor-pointer">
         {icon}
       </div>
     ));
@@ -30,17 +30,17 @@ const UserCard: React.FC<IProps> = ({ user }) => {
       </Link>
 
       {/* intro */}
-      <div className=" flex flex-col justify-center items-center gap-4">
+      <div className="flex flex-col items-center justify-center gap-4 ">
         <Link to={`/users/${id}`}>
-          <h2 className=" text-3xl font-extrabold hover:text-black/60 duration-300">Stark Lin</h2>
+          <h2 className="text-3xl font-extrabold duration-300  hover:text-black/60">Stark Lin</h2>
         </Link>
-        <p className=" text-md leading-6 text-justify text-gray-500 line-clamp-3 lg:line-clamp-none">
+        <p className="leading-6 text-justify text-gray-500  text-md line-clamp-3 lg:line-clamp-none">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Officia harum blanditiis natus molestias id, nemo adipisci libero, tempore, atque nihil corrupti suscipit minima fuga et vitae aut repellendus exercitationem quaerat.
         </p>
       </div>
 
       {/* links */}
-      <div className=" flex flex-row justify-center items-center gap-4">
+      <div className="flex flex-row items-center justify-center gap-4 ">
         {
           renderIcons([
             <AiFillGithub />,
