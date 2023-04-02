@@ -7,12 +7,12 @@ interface IProps {
 
 const BaseLayout: React.FC<IProps> = ({ children }) => {
   return (
-    <div className=" relative w-full">
+    <div className="relative w-full ">
       <header>
         <Navbar />
       </header>
 
-      <div className=" container mx-auto mt-[32px]">
+      <div className=" container mx-auto mt-[32px] py-[16px]">
         {children}
       </div>
 

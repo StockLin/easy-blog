@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Button from '../common/components/Button';
 import DescriptionBox from '../common/components/DescriptionBox';
+import Filter from '../features/posts/Filter';
 import PostCard from '../features/posts/PostICard';
 import PostList from '../features/posts/PostList'
 import PostSkeleton from '../features/posts/PostSkeleton';
@@ -83,8 +84,12 @@ const Home = () => {
   return (
     <section className=" w-full flex flex-col lg:flex-row py-[32px]">
       {/* post list */}
-      <div className=" lg:basis-2/3">
-        <PostList posts={posts} />
+      <div className="flex flex-col lg:basis-2/3">
+        <Filter />
+
+        <div className=" pt-[50px]">
+          <PostList posts={posts} />
+        </div>
       </div>
 
       {/* about me */}

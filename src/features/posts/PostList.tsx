@@ -16,7 +16,7 @@ const PostList: React.FC<IProps> = ({ posts, loading = false }) => {
       <PostSkeleton counts={4} showImage={true} />
     </div>
   ) : (
-    <div className="flex flex-col gap-4 p-8 ">
+    <div className="flex flex-col gap-4">
       {
         posts?.map((post, idx) => (
           <PostCard key={post.id} post={post} hiddenLine={idx === 0} />
