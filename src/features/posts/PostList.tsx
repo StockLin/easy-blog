@@ -19,7 +19,7 @@ const PostList: React.FC<IProps> = ({ posts, loading = false }) => {
     <div className="flex flex-col gap-4">
       {
         posts?.map((post, idx) => (
-          <PostCard key={post.id} post={post} hiddenLine={idx === 0} />
+          <PostCard key={`post-${idx}`} post={post} hiddenLine={idx === 0} />
         ))
       }
     </div>

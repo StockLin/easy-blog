@@ -13,26 +13,29 @@ import Home from './pages/Home';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/posts",
-    element: <PostList />,
-  },
-  {
-    path: "/posts/:id",
-    element: <Post />,
-  },
+    element: <BaseLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/posts",
+        element: <PostList />,
+      },
+      {
+        path: "/posts/:id",
+        element: <Post />,
+      }
+    ]
+  }
 ]);
 
 const App = () => {
   return (
     <div className="App text-gr">
       <SkeletonTheme baseColor="rgb(229, 231, 235)" highlightColor="rgb(243, 244, 246)">
-        <BaseLayout>
-          <RouterProvider router={router} />
-        </BaseLayout>
+        <RouterProvider router={router} />
       </SkeletonTheme>
     </div>
   );

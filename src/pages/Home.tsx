@@ -82,9 +82,9 @@ const Home = () => {
   )
 
   return (
-    <section className=" w-full flex flex-col lg:flex-row py-[32px]">
+    <section className="flex flex-col w-full  lg:flex-row">
       {/* post list */}
-      <div className="flex flex-col lg:basis-2/3">
+      <div className="flex flex-col lg:basis-2/3 px-[24px]">
         <Filter />
 
         <div className=" pt-[50px]">
@@ -93,7 +93,7 @@ const Home = () => {
       </div>
 
       {/* about me */}
-      <div className=" hidden lg:basis-1/3 border-l-[0.1px] border-black/30  py-[64px] px-[24px] lg:flex flex-col gap-4">
+      <div className=" hidden lg:basis-1/3 border-l-[0.1px] border-black/30 px-[24px] lg:flex flex-col gap-4">
         <UserCard />
 
         {renderMostPopularPosts()}

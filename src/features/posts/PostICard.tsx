@@ -21,15 +21,15 @@ const PostCard: React.FC<IProps> = ({ post, bookMark = false, hiddenLine = false
   const { data: user } = useGetUserQuery(userId);
 
   const renderCardFooter = (
-    <div className="flex flex-row justify-between w-full py-8  item-center">
-      <div className="flex flex-row items-center gap-2 text-xs  flex-nowrap">
-        <button className="px-2 py-1 duration-300 bg-gray-200 rounded-full  hover:bg-gray-300">JavaScript</button>
+    <div className="flex flex-row justify-between w-full py-8 item-center">
+      <div className="flex flex-row items-center gap-2 text-xs flex-nowrap">
+        <button className="px-2 py-1 duration-300 bg-gray-200 rounded-full hover:bg-gray-300">JavaScript</button>
         <p>5 min read</p>
       </div>
 
       <div className="flex flex-row gap-2 ">
-        <FaRegBookmark className="text-xl text-gray-500 duration-300 cursor-pointer  hover:text-gray-600" />
-        <MdMoreHoriz className="text-xl text-gray-500 duration-300 cursor-pointer  hover:text-gray-600" />
+        <FaRegBookmark className="text-xl text-gray-500 duration-300 cursor-pointer hover:text-gray-600" />
+        <MdMoreHoriz className="text-xl text-gray-500 duration-300 cursor-pointer hover:text-gray-600" />
       </div>
     </div>
   );
@@ -43,7 +43,7 @@ const PostCard: React.FC<IProps> = ({ post, bookMark = false, hiddenLine = false
       <UserBriefHeader user={user} />
 
       {/* content */}
-      <Link className="w-full " to={`/post/${id}`}>
+      <Link className="w-full " to={`/posts/${id}`}>
         <div className=" mt-[12px] flex flex-row justify-between item-start">
           {/* left side */}
           <div className={`${thumbnail ? "basis-3/4" : ""}`}>
@@ -52,7 +52,7 @@ const PostCard: React.FC<IProps> = ({ post, bookMark = false, hiddenLine = false
               {
                 showContent && (
                   <div className="hidden md:block">
-                    <p className="overflow-hidden text-gray-500  line-clamp-2">{content}</p>
+                    <p className="overflow-hidden text-gray-500 line-clamp-2">{content}</p>
                   </div>
                 )
               }
@@ -60,7 +60,7 @@ const PostCard: React.FC<IProps> = ({ post, bookMark = false, hiddenLine = false
 
             {
               showFooter && (
-                <div className="hidden  lg:block">
+                <div className="hidden lg:block">
                   {renderCardFooter}
                 </div>
               )
@@ -85,7 +85,7 @@ const PostCard: React.FC<IProps> = ({ post, bookMark = false, hiddenLine = false
 
       {
         showFooter && (
-          <div className="block w-full  lg:hidden">
+          <div className="block w-full lg:hidden">
             {renderCardFooter}
           </div>
         )

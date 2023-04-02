@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import { Outlet } from "react-router-dom";
 
 interface IProps {
   children?: React.ReactNode
@@ -12,7 +13,8 @@ const BaseLayout: React.FC<IProps> = ({ children }) => {
         <Navbar />
       </header>
 
-      <div className=" container mx-auto mt-[32px] py-[16px]">
+      <div className=" container mx-auto mt-[64px] py-[16px]">
+        <Outlet />
         {children}
       </div>
 

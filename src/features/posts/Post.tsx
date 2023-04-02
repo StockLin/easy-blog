@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGetUserQuery } from "../users/usersSlice";
+import PostSkeleton from "./PostSkeleton";
 import { useGetPostQuery } from "./postsSlice";
 
 const Post: React.FC = () => {
@@ -10,9 +11,9 @@ const Post: React.FC = () => {
 
 
   return isLoading ? (
-    <p>Fetching Post</p>
+    <PostSkeleton />
   ) : (
-    <div className="grid grid-cols-3  grap-8">
+    <div className="grid grid-cols-3 grap-8">
       {/* post */}
       <div className="col-span-2 ">
 
