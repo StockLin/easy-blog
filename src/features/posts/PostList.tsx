@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import PostCard from "./PostICard";
+import PostCard from "./PostCard";
 import PostSkeleton from "./PostSkeleton";
 import { useGetPostQuery, useGetPostsQuery } from "./postsSlice";
 import { IPost } from "./types";

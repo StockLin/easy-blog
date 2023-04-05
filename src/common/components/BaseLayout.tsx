@@ -18,9 +18,9 @@ const BaseLayout: React.FC<IProps> = ({ children }) => {
         {children}
       </div>
 
-      <footer>
+      {/* <footer>
         Footer
-      </footer>
+      </footer> */}
     </div>
   )
 }
